@@ -1,5 +1,6 @@
 from tokens import tokenizer, compiler
 import os
+import sys
 #open file
 class RevoMain:
   def __init__(self, filename):
@@ -18,3 +19,9 @@ if __name__ == "__main__":
   print("=== Output ===")
   os.system("gcc build/temp.c ")
   os.system("./a.out")
+
+p = RevoMain(str(sys.argv[1]))
+p.build()
+print("=== Output ===")
+os.system("gcc build/temp.c ")
+os.system("./a.out")

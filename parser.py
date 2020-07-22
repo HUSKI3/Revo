@@ -40,6 +40,21 @@ def parse(token,compiles,line):
       return "char str[100]; \n scanf"
     else:
       return "input from keyboard"
+  if token.startswith('open') == True:
+    if compiles == True:
+      return "fopen"
+    else:
+      return "open file"
+  if token.startswith('read') == True:
+    if compiles == True:
+      return "fscanf"
+    else:
+      return "read all from file"
+  if token.startswith('close') == True:
+    if compiles == True:
+      return "fclose"
+    else:
+      return "close file"
   if token.startswith('supercoolfunction') == True:
     if compiles == True:
       return '''printf("This is an epic function to demonstrate the use cases for this easily modifiable language")'''

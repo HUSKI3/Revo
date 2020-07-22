@@ -1,14 +1,9 @@
-int value = 3 
-print ("REVO\n")
-if (value == 3) {
-print ("\n")
-print ("I used to rule the world\n")
-print ("Chunks would load when I gave the word\n")
-int testInteger
-print ("Enter an integer: ")
-input ("%d", &testInteger)
-print ("Number = %d",testInteger)
-if (testInteger == 30){
-  print ("\n epic")
-}
-}
+print ("REVO compiled code\n")
+
+FILE *file
+char c[1000]
+
+file = open ("wow","r")
+read (file,"%[^\n]", c)
+print (c)
+

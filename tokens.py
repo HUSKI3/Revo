@@ -14,7 +14,10 @@ class tokenizer:
     "if",      # simple if statement
     "line-end",# system reserved
     "supercoolfunction", # whatever the heck this is
-    "input"    # takes string input up to 100 characters 
+    "input",   # takes string input up to 100 characters 
+    "open",
+    "read",
+    "close"
   ]
   operators = [
     "{",
