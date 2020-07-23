@@ -8,4 +8,4 @@ temp = first
 first = second 
 second = temp 
 print ("\nAfter swapping, firstNumber = %.2lf\n", first) 
-print ("After swapping, secondNumber = %.2lf", second) 
+print ("After swapping, secondNumber = %.2lf\n", second) 
