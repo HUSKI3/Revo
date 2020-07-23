@@ -1,13 +1,15 @@
 #include <stdio.h> 
- int main() { printf  ("REVO  compiled  code\n") ;
-  ;
- FILE  *file ;
- char  c[1000] ;
-  ;
- file  =  fopen  ("wow","r") ;
- fscanf  (file,"%[^\n]",  c) ;
- printf  (c) ;
-  ;
+ int main() { //calculator.rv// ;
+ double  first,  second,  temp   ;
+ printf  ("Enter  first  number:  ")   ;
+ scanf  ("%lf",  &first)   ;
+ printf  ("Enter  second  number:  ")   ;
+ scanf  ("%lf",  &second)   ;
+ temp  =  first   ;
+ first  =  second   ;
+ second  =  temp   ;
+ printf  ("\nAfter  swapping,  firstNumber  =  %.2lf\n",  first)   ;
+ printf  ("After  swapping,  secondNumber  =  %.2lf",  second)   ;
 
 return 0;
 }

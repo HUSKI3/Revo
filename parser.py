@@ -37,7 +37,7 @@ def parse(token,compiles,line):
       return "start of bracket"
   if token.startswith('input') == True:
     if compiles == True:
-      return "char str[100]; \n scanf"
+      return "scanf"
     else:
       return "input from keyboard"
   if token.startswith('open') == True:
