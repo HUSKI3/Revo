@@ -1,3 +1,5 @@
+
+main () {
 print ("REVO compiled code\n")
 
 FILE *file
@@ -6,4 +8,4 @@ char c[1000]
 file = open ("wow","r")
 read (file,"%[^\n]", c)
 print (c)
-
+}

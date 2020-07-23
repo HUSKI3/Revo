@@ -1,4 +1,5 @@
 //Revo version 1.0.4 numberswapper.rv//
+main () {
 double first, second, temp 
 print ("Enter first number: ") 
 input ("%lf", &first) 
@@ -9,3 +10,4 @@ first = second
 second = temp 
 print ("\nAfter swapping, firstNumber = %.2lf\n", first) 
 print ("After swapping, secondNumber = %.2lf\n", second) 
+}

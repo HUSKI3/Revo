@@ -49,12 +49,22 @@ def parse(token,compiles,line):
     if compiles == True:
       return "fscanf"
     else:
-      return "read all from file"
+      return "read all data from file"
   if token.startswith('close') == True:
     if compiles == True:
       return "fclose"
     else:
       return "close file"
+  if token.startswith('main') == True:
+    if compiles == True:
+      return "int main"
+    else:
+      return "create a main function"
+  if token.startswith('re_void') == True:
+    if compiles == True:
+      return "static void"
+    else:
+      return "create a main function"
   if token.startswith('supercoolfunction') == True:
     if compiles == True:
       return '''printf("This is an epic function to demonstrate the use cases for this easily modifiable language")'''

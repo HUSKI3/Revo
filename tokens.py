@@ -3,21 +3,23 @@ import parser
 class tokenizer:
   keywords = [
     "print",   # terminal output
-    "//",      # comment
+    "//",      # comment 
     "stat",    # code statistics
     "const",   # create a constant variable
     "redest",  # redestribute resources 
     "contort", # clean the output logs in output.logs.rv
     "str",     # create string object
-    "int",     # create integer object
+    "int",     # create integer object /  initalize new function
     "bool",    # create boolean object
     "if",      # simple if statement
     "line-end",# system reserved
     "supercoolfunction", # whatever the heck this is
     "input",   # takes string input up to 100 characters 
-    "open",
-    "read",
-    "close"
+    "open",    # open files
+    "read",    # read everything from files
+    "close"    # close file
+    "main",    # main function
+    "re_void"  # replaces "static void" for easier use
   ]
   operators = [
     "{",
@@ -66,7 +68,7 @@ class compiler:
       #translate Revo to C for compilation using parser
       print("=== Starting translation ===")
       #header
-      f.write("#include <stdio.h> \n int main() {")
+      f.write("#include <stdio.h> \n")
       #create code split list
       lines = code.readlines()
       imp=[]
