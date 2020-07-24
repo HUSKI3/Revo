@@ -1,38 +1,39 @@
 #include <stdio.h> 
  //draws  rectangles// ;
+ main  () 
+ { 
+ int  a ;
+ int  b ;
+ printf  ("Height:  ") ;
+ int  height  =  0 ;
+ scanf  ("%d",&height) ;
+ printf  ("Width:  ") ;
+ int  width  =  0 ;
+ scanf  ("%d",&width) ;
+ for  (a  =  0;  a  !=  height;  a++) 
+ { 
   ;
- static void  drawrect(int  w,  int  h) ;
-
- { ;
-         int  i,  j; ;
-         for  (i  =  0;  i  <  w;  i++) ;
- 	putchar('x'); ;
-         putchar('\n'); ;
-         for  (i  =  2;  i  <  h;  i++) ;
+         for  (b  =  0;  b  !=  width;  b++  ) 
+ { 
+  ;
+                 if  (a  ==  0  ||  a==  height-1  ) 
+ { 
+                         printf  ("+") ;
+               }else{ ;
+                         if(b  ==  0  ||  b  ==  width-1){ ;
+                                 printf  ("+") ;
+                         }else{ ;
+                                 printf  ("  ") ;
+                        
+ } 
+              
+ } 
         
- { ;
-                 putchar('x'); ;
-                 for  (j  =  2;  j  <  w;  j++) ;
- 	        putchar('  '); ;
- 	putchar('x'); ;
- 	putchar('\n'); ;
-        
- } ;
-         for  (i  =  0;  i  <  w;  i++) ;
- 	putchar('x'); ;
-         putchar('\n'); ;
-
- } ;
+ } 
   ;
- main() ;
+         printf  ("\n") ;
 
- { ;
-         drawrect(10,15); ;
-         drawrect(3,5); ;
-         drawrect(50,20); ;
-         drawrect(10,10); ;
-         drawrect(2,2); ;
-  ;
+ } 
 
 return 0;
 }

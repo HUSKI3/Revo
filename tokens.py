@@ -23,7 +23,9 @@ class tokenizer:
   ]
   operators = [
     "{",
-    "}"
+    "}",
+    ">",       # after C lib import
+    "//"       # auxilary operator for comments 
   ]
 
   tokens = []
@@ -82,6 +84,7 @@ class compiler:
       #check keywords and display information about keywords
       print("------------" + (' ' * 15)  + "   " + "revoval " + "||| " + "description")
       i=0
+      x=0
       for token in imp:
         rev_bit=""
         #is token a valid function?
@@ -97,11 +100,16 @@ class compiler:
           else:
             if token in tokenizer.operators:
               finalcode += "\n"
+              x = 1
             if token == "line-end":
               if imp[imp.index(token)-1] in tokenizer.operators:
                 finalcode += "\n"
               else:
-                finalcode += ";\n"
+                if x != 1:
+                  finalcode += ";\n"
+                else:
+                  finalcode += "\n"
+                  x=0
             else:
               finalcode += " "+rev_bit+" "
         else:

@@ -1,29 +1,27 @@
 //draws rectangles//
+main () {
+int a
+int b
+print ("Height: ")
+int height = 0
+input ("%d",&height)
+print ("Width: ")
+int width = 0
+input ("%d",&width)
+for (a = 0; a != height; a++) {
 
-re_void drawrect(int w, int h)
-{
-    int i, j;
-    for (i = 0; i < w; i++)
-	putchar('x');
-    putchar('\n');
-    for (i = 2; i < h; i++)
-    {
-        putchar('x');
-        for (j = 2; j < w; j++)
-	    putchar(' ');
-	putchar('x');
-	putchar('\n');
+    for (b = 0; b != width; b++ ) {
+
+        if (a == 0 || a== height-1 ) {
+            print ("+")
+       }else{
+            if(b == 0 || b == width-1){
+                print ("+")
+            }else{
+                print (" ")
+            }
+       }
     }
-    for (i = 0; i < w; i++)
-	putchar('x');
-    putchar('\n');
-}
 
-main()
-{
-    drawrect(10,15);
-    drawrect(3,5);
-    drawrect(50,20);
-    drawrect(10,10);
-    drawrect(2,2);
-}
+    print ("\n")
+}}
