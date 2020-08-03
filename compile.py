@@ -23,5 +23,5 @@ if __name__ == "__main__":
 p = RevoMain(str(sys.argv[1]))
 p.build()
 print("=== Output ===")
-os.system("gcc build/temp.c ")
-os.system("./a.out")
+os.system("gcc build/temp.c -o revobin")
+os.system("./revobin")
