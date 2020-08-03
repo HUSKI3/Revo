@@ -2,22 +2,21 @@ import parser
 
 class tokenizer:
   keywords = [
-    "print",   # terminal output
-    "//",      # comment
-    "stat",    # code statistics
-    "const",   # create a constant variable
-    "redest",  # redestribute resources 
-    "contort", # clean the output logs in output.logs.rv
-    "str",     # create string object
-    "int",     # create integer object
-    "bool",    # create boolean object
-    "if",      # simple if statement
-    "line-end",# system reserved
-    "supercoolfunction", # whatever the heck this is
-    "input",   # takes string input up to 100 characters 
-    "open",
-    "read",
-    "close"
+    "print",    # terminal output
+    "//",       # comment
+    "stat",     # code statistics
+    "const",    # create a constant variable
+    "redest",   # redestribute resources 
+    "contort",  # clean the output logs in output.logs.rv
+    "str",      # create string object
+    "int",      # create integer object
+    "bool",     # create boolean object
+    "if",       # simple if statement
+    "line-end", # system reserved
+    "input",    # takes string input up to 100 characters 
+    "open",     # open a file (same syntax as C)
+    "read",     # read from a file
+    "close"     # close a file
   ]
   operators = [
     "{",
@@ -80,6 +79,7 @@ class compiler:
       #check keywords and display information about keywords
       print("------------" + (' ' * 15)  + "   " + "revoval " + "||| " + "description")
       i=0
+      variables=[]
       for token in imp:
         rev_bit=""
         #is token a valid function?
@@ -92,6 +92,18 @@ class compiler:
             f.write(str(rev_bit))
             if i == 2:
               i=0
+          if token in ["int","bool","str"]:
+              variables+=[rev_bit,imp[imp.index(token)+1],imp[imp.index(token)+2]]
+              print("Variable created, variable info:",rev_bit,imp[imp.index(token)+1],imp[imp.index(token)+3])
+          if token == "print":
+              line =  []
+              for word in imp[imp.index(token):]:
+                if word == "line-end":
+                  break
+                else:
+                  line.append(word)
+              print("Print found, info:"," ".join(line))
+              finalcode += " "+str(rev_bit)+" "
           else:
             if token in tokenizer.operators:
               finalcode += "\n"
@@ -101,11 +113,12 @@ class compiler:
               else:
                 finalcode += ";\n"
             else:
-              finalcode += " "+rev_bit+" "
+              print(rev_bit)
+              finalcode += " "+str(rev_bit)+" "
         else:
           revoval = "no"
-          finalcode += " "+token+" "
-        print("--- > Token: " + token + (' ' * (15-len(token)))  + "<---- " + revoval + (' ' * (4-len(revoval))) + "||| " + rev_bit)
+          finalcode += " "+str(token)+" "
+        print("--- > Token: " + token + (' ' * (15-len(token)))  + "<---- " + revoval + (' ' * (4-len(revoval))) + "||| " + str(rev_bit))
       print(finalcode)
       f.write(finalcode)
       f.write("\nreturn 0;\n}")

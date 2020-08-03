@@ -1,9 +1,9 @@
+//REVO//
+
 print ("REVO compiled code\n")
 
-FILE *file
-char c[1000]
+print ("\nBanan")
 
-file = open ("wow","r")
-read (file,"%[^\n]", c)
-print (c)
+int num = 1
 
+print ("\n%d\n",num)
