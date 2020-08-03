@@ -59,8 +59,8 @@ class compiler:
   aug = "None"
 
   # build base sceleton 
-  def scel(code):
-    print("Building C sceleton")
+  def scel(code,state):
+    print("=== Building C sceleton ===")
     with open("build/temp.c","w+") as f:
       #translate Revo to C for compilation using parser
       print("=== Starting translation ===")
@@ -77,7 +77,8 @@ class compiler:
           imp.append(i)
         imp.append("line-end")
       #check keywords and display information about keywords
-      print("------------" + (' ' * 15)  + "   " + "revoval " + "||| " + "description")
+      if state =="d":
+       print("------------" + (' ' * 15)  + "   " + "revoval " + "||| " + "description")
       i=0
       variables=[]
       for token in imp:
@@ -94,7 +95,8 @@ class compiler:
               i=0
           if token in ["int","bool","str"]:
               variables+=[rev_bit,imp[imp.index(token)+1],imp[imp.index(token)+2]]
-              print("Variable created, variable info:",rev_bit,imp[imp.index(token)+1],imp[imp.index(token)+3])
+              if state =="d":
+                print("Variable created, variable info:",rev_bit,imp[imp.index(token)+1],imp[imp.index(token)+3])
           if token == "print":
               line =  []
               for word in imp[imp.index(token):]:
@@ -102,7 +104,8 @@ class compiler:
                   break
                 else:
                   line.append(word)
-              print("Print found, info:"," ".join(line))
+              if state =="d":
+                print("Print found, info:"," ".join(line))
               finalcode += " "+str(rev_bit)+" "
           else:
             if token in tokenizer.operators:
@@ -113,13 +116,16 @@ class compiler:
               else:
                 finalcode += ";\n"
             else:
-              print(rev_bit)
+              if state =="d":
+                print(rev_bit)
               finalcode += " "+str(rev_bit)+" "
         else:
           revoval = "no"
           finalcode += " "+str(token)+" "
-        print("--- > Token: " + token + (' ' * (15-len(token)))  + "<---- " + revoval + (' ' * (4-len(revoval))) + "||| " + str(rev_bit))
-      print(finalcode)
+        if state =="d":
+          print("--- > Token: " + token + (' ' * (15-len(token)))  + "<---- " + revoval + (' ' * (4-len(revoval))) + "||| " + str(rev_bit))
+      if state =="d":
+        print(finalcode)
       f.write(finalcode)
       f.write("\nreturn 0;\n}")
       f.close()
