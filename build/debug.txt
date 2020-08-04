@@ -1,0 +1,38 @@
+
+--- > Token: //REVO//       <---- no  ||| 
+
+--- > Token: line-end       <---- yes |||  
+Print found, info:print ("REVO compiled code\n")
+--- > Token: print          <---- yes ||| printf
+
+--- > Token: ("REVO         <---- no  ||| 
+
+--- > Token: compiled       <---- no  ||| 
+
+--- > Token: code\n")       <---- no  ||| 
+
+--- > Token: line-end       <---- yes |||  
+Print found, info:print ("REVO compiled code\n")
+--- > Token: print          <---- yes ||| printf
+
+--- > Token: ("\nBanan")    <---- no  ||| 
+
+--- > Token: line-end       <---- yes |||  
+
+Variable created, variable info: int num 1
+
+--- > Token: int            <---- yes ||| int
+
+--- > Token: num            <---- no  ||| 
+
+--- > Token: =              <---- no  ||| 
+
+--- > Token: 1              <---- no  ||| 
+
+--- > Token: line-end       <---- yes |||  
+Print found, info:print ("REVO compiled code\n")
+--- > Token: print          <---- yes ||| printf
+
+--- > Token: ("\n%d\n",num) <---- no  ||| 
+
+--- > Token: line-end       <---- yes |||  

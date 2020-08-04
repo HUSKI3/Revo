@@ -60,6 +60,7 @@ class compiler:
 
   # build base sceleton 
   def scel(code,state):
+    debug=""
     print("=== Building C sceleton ===")
     with open("build/temp.c","w+") as f:
       #translate Revo to C for compilation using parser
@@ -96,15 +97,18 @@ class compiler:
           if token in ["int","bool","str"]:
               variables+=[rev_bit,imp[imp.index(token)+1],imp[imp.index(token)+2]]
               if state =="d":
+                debug+="\nVariable created, variable info: {} {} {}".format(rev_bit,imp[imp.index(token)+1],imp[imp.index(token)+3])+"\n"
                 print("Variable created, variable info:",rev_bit,imp[imp.index(token)+1],imp[imp.index(token)+3])
           if token == "print":
               line =  []
+              word = ""
               for word in imp[imp.index(token):]:
                 if word == "line-end":
                   break
                 else:
                   line.append(word)
               if state =="d":
+                debug+="Print found, info:"+" ".join(line)
                 print("Print found, info:"," ".join(line))
               finalcode += " "+str(rev_bit)+" "
           else:
@@ -123,9 +127,13 @@ class compiler:
           revoval = "no"
           finalcode += " "+str(token)+" "
         if state =="d":
+          debug+=("\n--- > Token: " + token + (' ' * (15-len(token)))  + "<---- " + revoval + (' ' * (4-len(revoval))) + "||| " + str(rev_bit)+"\n")
           print("--- > Token: " + token + (' ' * (15-len(token)))  + "<---- " + revoval + (' ' * (4-len(revoval))) + "||| " + str(rev_bit))
       if state =="d":
         print(finalcode)
       f.write(finalcode)
       f.write("\nreturn 0;\n}")
+      f.close()
+      f= open("build/debug.txt","w+")
+      f.write(debug)
       f.close()
